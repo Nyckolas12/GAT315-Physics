@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+
 #include "scene_camera.h"
 #include <string>
 
@@ -24,6 +25,9 @@ public:
 
 protected:
 	void DrawGrid(float slices, float thickness, const Color& color);
+	void DrawText(const std::string& text, const Vector2& world, int fontSize, Color color);
+	void DrawCircle(const Vector2& world, float radius, Color color);
+	void DrawLine(const Vector2& v1, const Vector2& v2, float thickness, Color color);
 
 protected:
 	int m_width{ 0 };

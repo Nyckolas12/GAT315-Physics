@@ -11,6 +11,7 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 #include <Trig_Scene.h>
+#include <PolarScene.h>
 
 int main ()
 {
@@ -27,15 +28,23 @@ int main ()
 	Texture wabbit = LoadTexture("wabbit_alpha.png");
 
 	Scene* scene = new Trig_Scene("Trig Scene", 1280, 720);
-	scene->Initialize();
+	Scene* polarScene = new PolarScene("Polar Scene", 1280, 720);
+	//scene->Initialize();
+	polarScene->Initialize();
 	
 	// game loop
 	while (!WindowShouldClose())		// run the loop untill the user presses ESCAPE or presses the Close button on the window
 	{
-		scene->Update();
+		/*scene->Update();
 		scene->BeginDraw();
 		scene->Draw();
-		scene->EndDraw();
+		scene->EndDraw();*/
+		polarScene->Update();
+		polarScene->BeginDraw();
+		polarScene->Draw();
+		polarScene->EndDraw();
+
+
 		
 	}
 

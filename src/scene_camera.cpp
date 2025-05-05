@@ -40,3 +40,4 @@ Vector2 SceneCamera::WorldToScreen(const Vector2& world)
 {
 	return { world.x * m_ppu, world.y * m_ppu };
 }
+
