@@ -12,6 +12,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 #include <Trig_Scene.h>
 #include <PolarScene.h>
+#include <vector_scene.h>
+#include "spring_scene.h"
 
 int main ()
 {
@@ -27,11 +29,16 @@ int main ()
 	// Load a texture from the resources directory
 	Texture wabbit = LoadTexture("wabbit_alpha.png");
 
-	Scene* scene = new Trig_Scene("Trig Scene", 1280, 720);
-	Scene* polarScene = new PolarScene("Polar Scene", 1280, 720);
+	//Scene* scene = new Trig_Scene("Trig Scene", 1280, 720);
+	//Scene* polarScene = new PolarScene("Polar Scene", 1280, 720);
+	//Scene* vectorScene = new VectorScene("Vector Scene", 1280, 720);
+	Scene* springScene = new SpringScene("Spring Scene", 1280, 720);
 	//scene->Initialize();
-	polarScene->Initialize();
-	
+	//polarScene->Initialize();
+	springScene->Initialize();
+
+	SetTargetFPS(60);
+	float timeAccum = 0.0f;
 	// game loop
 	while (!WindowShouldClose())		// run the loop untill the user presses ESCAPE or presses the Close button on the window
 	{
@@ -39,10 +46,22 @@ int main ()
 		scene->BeginDraw();
 		scene->Draw();
 		scene->EndDraw();*/
-		polarScene->Update();
+		/*polarScene->Update();
 		polarScene->BeginDraw();
 		polarScene->Draw();
-		polarScene->EndDraw();
+		polarScene->EndDraw();*/
+
+		springScene->Update();
+		timeAccum += std::min(GetFrameTime(), 0.5f);
+		while (timeAccum >= Scene::fixedTimeStep)
+		{
+			springScene->FixedUpdated();
+			timeAccum -= Scene::fixedTimeStep;
+		}
+		springScene->BeginDraw();
+		springScene->Draw();
+		springScene->DrawGUI();
+		springScene->EndDraw();
 
 
 		

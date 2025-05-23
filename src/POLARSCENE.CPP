@@ -16,7 +16,7 @@ void PolarScene::Draw()
 	DrawGrid(10, 5, WHITE);
 	//float radius = 3;
 	float rate = 0.2f;
-	float time = GetTime() * rate;
+	float time = (float)GetTime() * rate;
 	int steps = 100;
 	// Archimedean Spiral
 	for (int i = 0; i < steps; i++)
@@ -54,7 +54,7 @@ void PolarScene::Draw()
 		Polar polar(theta, radius);
 		Vector2 pos = polar;
 
-		//DrawCircle(pos, 0.25, RED);
+		DrawCircle(pos, 0.25, RED);
 	}
 
 	// Rose Curve
@@ -68,7 +68,7 @@ void PolarScene::Draw()
 		Polar polar(theta, radiusin);
 		Vector2 pos = polar;
 
-		//DrawCircle(pos, 0.25, RED);
+		DrawCircle(polar, 0.25, PURPLE);
 	}
 
 	//Fermat't Spiral
@@ -82,7 +82,7 @@ void PolarScene::Draw()
 		Vector2 pos = polar;
 		
 
-		DrawCircle(pos, 0.25, RED);
+		//DrawCircle(pos, 0.25, RED);
 	}
 
 	m_camera->EndMode();

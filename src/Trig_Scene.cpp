@@ -1,4 +1,5 @@
 #include "Trig_Scene.h"
+#include <mathUtils.h>
 
 void Trig_Scene::Initialize()
 {
@@ -10,21 +11,8 @@ void Trig_Scene::Update()
 {
 }
 
-float DegToRad(float degrees)
-{
-	return degrees * (PI / 180);
-}
 
-float RadToDeg(float radians)
-{
-	return radians * (180 / PI);
-}
 
-float Vector2Length(const Vector2& v)
-{
-	
-	return sqrt(v.x * v.x + v.y * v.y);
-}
 
 Vector2 Vector2Normalize(const Vector2& v)
 {
@@ -69,5 +57,9 @@ void Trig_Scene::Draw()
 }
 
 void Trig_Scene::DrawGUI()
+{
+}
+
+void Trig_Scene::FixedUpdated()
 {
 }

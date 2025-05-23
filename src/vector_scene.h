@@ -1,16 +1,17 @@
 #pragma once
 #include "scene.h"
 
-class Trig_Scene : public Scene
+struct Body;
+
+class VectorScene : public Scene
 {
 public:
-	Trig_Scene(const std::string& title, int width, int height, const Color& background = BLACK) : 
-		Scene(title, width, height, background) {}
+	VectorScene(const std::string& title, int width, int height, const Color& background = BLACK) :
+		Scene(title, width, height, background) {
+	}
 
 
 
-
-private:
 	// Inherited via Scene
 	void Initialize() override;
 
@@ -20,6 +21,8 @@ private:
 
 	void DrawGUI() override;
 
+private:
+	
 
 	// Inherited via Scene
 	void FixedUpdated() override;
