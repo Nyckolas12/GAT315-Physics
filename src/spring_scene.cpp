@@ -22,12 +22,12 @@ void SpringScene::Update()
 {
 	float dt = GetFrameTime();
 	
-	if (!GUI::mouseOverGUI && IsMouseButtonPressed(0))
+	if (!GUI::mouseOverGUI)
 	{
 		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
 		{
 		Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
-		Body::Type type = (Body::Type)GUI::physicsWindowBoxActive;
+		Body::Type type = (Body::Type)GUI::bodyTypeActive;
 
 		Body* body = m_world->CreateBody(type,position,GUI::massValue, GUI::sizeValue, ColorFromHSV(randomf(360), 1, 1));
 
@@ -53,7 +53,7 @@ void SpringScene::Update()
 				if (m_selectedBody && m_conncetedBody)
 				{
 					float distance = Vector2Distance(m_selectedBody->position, m_conncetedBody->position);
-					m_world->CreateSpring(m_selectedBody, m_conncetedBody, distance, 20);
+					m_world->CreateSpring(m_selectedBody, m_conncetedBody, distance, GUI::stiffnessValue, GUI::dampingValue);
 				}
 
 				m_selectedBody = nullptr;
@@ -86,6 +86,8 @@ void SpringScene::Update()
 			body->position.x *= -body->restitution;
 		}*/
 	}
+
+	GUI::Update();
 }
 
 void SpringScene::FixedUpdated()

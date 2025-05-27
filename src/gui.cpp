@@ -5,7 +5,7 @@
 
 void GUI::Update()
 {
-	mouseOverGUI = physicsWindowBoxActive && CheckCollisionPointRec(GetMousePosition(), { anchor01.x + 0, anchor01.y + 0, 280, 504 });
+	mouseOverGUI = physicsWindowBoxActive && CheckCollisionPointRec(GetMousePosition(), { anchor01.x + 0, anchor01.y + 0, 312, 464 });
 	if (IsKeyPressed(KEY_TAB)) physicsWindowBoxActive = !physicsWindowBoxActive;
 }
 

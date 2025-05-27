@@ -36,8 +36,8 @@ void Grav::ApplyGravitation(bodies_t& bodies, float strength)
 
 
             // STEP 6: Apply the force to both bodies (equal and opposite)
-            bodyA->ApplyForce(forceVector * -1);
-            bodyB->ApplyForce(forceVector);
+            bodyA->ApplyForce(forceVector);
+            bodyB->ApplyForce(forceVector * -1);
         }
     }
 }

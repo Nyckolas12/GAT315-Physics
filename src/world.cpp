@@ -32,9 +32,9 @@ Body* World::CreateBody(Body::Type type, const Vector2& position, float mass, fl
     return body;
 }
 
-Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float k)
+Spring* World::CreateSpring(Body* bodyA, Body* bodyB, float restLength, float k, float damping)
 {
-    Spring* spring = new Spring(bodyA, bodyB, restLength, k);
+    Spring* spring = new Spring(bodyA, bodyB, restLength, k, damping);
     m_spring.push_back(spring);
     return spring;
 }

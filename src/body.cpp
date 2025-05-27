@@ -10,12 +10,12 @@ void Body::Step(float dt)
 	//apply gravity
 	force += (World::gravity * gravityScale) * mass;
 	//compute acceleration
-	acceleration += (force * inveMass) * dt;
+	acceleration = (force * inveMass);
 	
 	SemiImplictIntegrator(*this, dt);
 
 	//velocity *= 0.9999f/ (1.0f + (damping * dt));
-	velocity += World::gravity * dt;
+	//velocity += World::gravity * dt;
 	
 
 }
