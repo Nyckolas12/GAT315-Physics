@@ -24,8 +24,8 @@ public:
 	void FixedUpdated() override;
 
 private:
-	Body* m_selectedBody{nullptr};
-	Body* m_conncetedBody{nullptr};
+	Body* m_selectedBody{ nullptr };
+	Body* m_conncetedBody{ nullptr };
 
 
 };

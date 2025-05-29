@@ -22,11 +22,12 @@ public:
 	Body() {}
 
 	Body(const Vector2& position, const Vector2& velocity, float size, Color& color)
-		: position{ position }, velocity{ velocity }, size{ size }, color{ color } {}
+		: position{ position }, velocity{ velocity }, size{ size }, color{ color } {
+	}
 
-	Body(const Vector2& position, float size, const Color& color) : position{ position },  size{ size }, color{ color } {}
+	Body(const Vector2& position, float size, const Color& color) : position{ position }, size{ size }, color{ color } {}
 
-	Body(Type type, const Vector2& position, float mass, float size, const Color& color) : type{ type }, position{ position }, mass{mass}, size {size}, color{ color } 
+	Body(Type type, const Vector2& position, float mass, float size, const Color& color) : type{ type }, position{ position }, mass{ mass }, size{ size }, color{ color }
 	{
 		inveMass = (type == Type::Dynamic && mass != 0) ? 1 / mass : 0;
 	}
@@ -39,7 +40,7 @@ public:
 
 
 public:
-	Vector2 position{0,0};
+	Vector2 position{ 0,0 };
 	Vector2 velocity{ 0,0 };
 	Vector2 acceleration{ 0,0 };
 	Vector2 force{ 0,0 };
@@ -56,6 +57,6 @@ public:
 
 	Type type = Type::Dynamic;
 
-	Body* next {nullptr};
+	Body* next{ nullptr };
 	Body* prev{ nullptr };
 };

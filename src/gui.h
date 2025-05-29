@@ -4,13 +4,13 @@
 class GUI
 {
 public:
-	static void Update();
-	static void Draw();
+    static void Update();
+    static void Draw();
 
-	static struct Body* GetBodyIntersect(const Vector2& position, bodies_t& bodies, const SceneCamera& camera);
+    static struct Body* GetBodyIntersect(const Vector2& position, bodies_t& bodies, const SceneCamera& camera);
 
 public:
-	inline static bool mouseOverGUI = false;
+    inline static bool mouseOverGUI = false;
 
     inline static  Vector2 anchor01 = { 72, 48 };
     inline static  Vector2 anchor02 = { 96, 96 };
@@ -29,7 +29,7 @@ public:
     inline static  float stiffnessValue = 15.0f;
     inline static  float gravitationValue = 0.0f;
     inline static  float gravityValue = 0.0f;
-    
+
     inline static  bool simulateActive = true;
 
 };

@@ -87,17 +87,13 @@ void SpringScene::Update()
 
 		}
 
-		/*if (body->position.x < -9)
+		if (body->position.x < -9)
 		{
 			body->position.x = -9;
-			body->position.x *= -body->restitution;
+			body->velocity.x *= -GUI::restitutionValue;
 		}
 
-		if (body->position.x < 9)
-		{
-			body->position.x = 9;
-			body->position.x *= -body->restitution;
-		}*/
+		
 	}
 
 	GUI::Update();

@@ -13,10 +13,10 @@ inline float randomf(float max)
 	return randomf() * max;
 }
 
-inline float randomf(float min,float max)
+inline float randomf(float min, float max)
 {
-	if(min > max) std::swap(min, max);
-	return min +( randomf() *(max- min));
+	if (min > max) std::swap(min, max);
+	return min + (randomf() * (max - min));
 }
 
 inline float DegToRad(float degrees)
@@ -38,5 +38,5 @@ inline float Vector2Length(const Vector2& v)
 inline Vector2 randomOnUnitCircle()
 {
 	float theta = randomf(0, PI * 2);
-	return {cosf(theta), sinf(theta)};
+	return { cosf(theta), sinf(theta) };
 }

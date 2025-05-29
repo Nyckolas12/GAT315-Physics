@@ -19,7 +19,7 @@ public:
 		bodyB{ bodyB },
 		restLength{ restLength },
 		k{ k },
-		damping{damping }
+		damping{ damping }
 	{
 	}
 

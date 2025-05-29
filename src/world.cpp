@@ -14,7 +14,7 @@ void World::Initialize(Vector2 gravity, size_t poolSize)
 {
     World::gravity = gravity;
     m_bodies.reserve(poolSize);
-   
+
 }
 
 Body* World::CreateBody(const Vector2& position, float size, const Color& color)
@@ -27,7 +27,7 @@ Body* World::CreateBody(const Vector2& position, float size, const Color& color)
 
 Body* World::CreateBody(Body::Type type, const Vector2& position, float mass, float size, const Color& color)
 {
-    Body* body = new Body(type,position, mass, size, color);
+    Body* body = new Body(type, position, mass, size, color);
     m_bodies.push_back(body);
 
     return body;
@@ -44,7 +44,7 @@ void World::Step(float timestep)
 {
     if (!simulate) return;
 
-    if(gravitation > 0) Grav::ApplyGravitation(m_bodies, gravitation);
+    if (gravitation > 0) Grav::ApplyGravitation(m_bodies, gravitation);
 
     for (auto spring : m_spring)
     {
@@ -58,8 +58,9 @@ void World::Step(float timestep)
     }
 
     m_contacts.clear();
-   Collision::CreateContacts(m_bodies, m_contacts);
-   Collision::SeparateContacts(m_contacts);
+    Collision::CreateContacts(m_bodies, m_contacts);
+    Collision::SeparateContacts(m_contacts);
+    Collision::ResolveContacts(m_contacts);
 }
 
 void World::Draw(const Scene& scene)
