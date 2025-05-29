@@ -1,6 +1,7 @@
 #pragma once
 #include <cstdlib>
 #include <algorithm>
+#include "raylib.h"
 
 inline float randomf()
 {
@@ -32,4 +33,10 @@ inline float Vector2Length(const Vector2& v)
 {
 
 	return sqrtf(v.x * v.x + v.y * v.y);
+}
+
+inline Vector2 randomOnUnitCircle()
+{
+	float theta = randomf(0, PI * 2);
+	return {cosf(theta), sinf(theta)};
 }

@@ -22,9 +22,11 @@ void SpringScene::Update()
 {
 	float dt = GetFrameTime();
 	
+	if (IsKeyPressed(KEY_SPACE)) World::simulate = !World::simulate;
+
 	if (!GUI::mouseOverGUI)
 	{
-		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && IsKeyDown(KEY_LEFT_CONTROL)))
 		{
 		Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
 		Body::Type type = (Body::Type)GUI::bodyTypeActive;
@@ -33,6 +35,9 @@ void SpringScene::Update()
 
 		body->restitution = GUI::restitutionValue;
 		body->gravityScale = GUI::gravityScaleValue;
+		body->damping = GUI::dampingValue;
+
+		body->ApplyForce(randomOnUnitCircle() * 32, Body::ForceMode::Velocity);
 
 		}
 
@@ -44,7 +49,15 @@ void SpringScene::Update()
 
 		if (m_selectedBody)
 		{
-			if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
+			if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT) && IsKeyDown(KEY_LEFT_CONTROL))
+			{
+				if (m_selectedBody->type == Body::Type::Dynamic)
+				{
+				Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
+				Spring::ApplyForce(position, *m_selectedBody, 0.23f, 15.0f);
+
+				}
+			}else if (IsMouseButtonDown(MOUSE_BUTTON_RIGHT))
 			{
 				Vector2 position = m_camera->ScreenToWorld(GetMousePosition());
 				m_conncetedBody = GUI::GetBodyIntersect(position, m_world->GetBodies(), *m_camera);

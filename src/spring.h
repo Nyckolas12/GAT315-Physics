@@ -24,6 +24,7 @@ public:
 	}
 
 	void ApplyForce(float kMultiplier = 1);
+	static void ApplyForce(const Vector2& position, Body& body, float restLength, float k);
 	static void ApplyForce(const Vector2& position, struct Body& body, float restLength, float k, float damping);
 	void Draw(const Scene& scene);
 };

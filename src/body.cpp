@@ -26,7 +26,23 @@ void Body::Draw(const Scene& scene)
 	//scene.DrawLine(position - velocity, velocity - position, 0.234f, color);
 }
 
-void Body::ApplyForce(const Vector2& force)
+void Body::ApplyForce(const Vector2& force , ForceMode forceMode)
 {
+	switch (forceMode)
+	{
+	case Body::ForceMode::Force:
+		this->force += force;
+		break;
+	case Body::ForceMode::Impulse:
+		this->velocity += force * inveMass;
+		break; 
+	case Body::ForceMode::Velocity:
+			this->velocity += force;
+			break;
+	default:
+		break;
+	}
+	
+
 	this->force += force;
 }
