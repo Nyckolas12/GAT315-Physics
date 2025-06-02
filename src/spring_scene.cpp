@@ -73,6 +73,8 @@ void SpringScene::Update()
 				m_conncetedBody = nullptr; 
 			}
 		}
+
+		if (GUI::resetPressed) m_world->DestroyAll();
 		
 	}
 	
